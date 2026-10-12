@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RJLcode · Projects</title>
+<meta name="description" content="Live dashboards and web apps by RJLcode. Open them on your phone or computer, no install needed.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://rjlcode.github.io/">
+
+<!-- Icons -->
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+<!-- Sharing previews (Facebook, Instagram, iMessage, X, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RJLcode">
+<meta property="og:title" content="RJLcode · Projects">
+<meta property="og:description" content="Live dashboards and web apps by RJLcode. Open them on your phone or computer, no install needed.">
+<meta property="og:url" content="https://rjlcode.github.io/">
+<meta property="og:image" content="https://rjlcode.github.io/img/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RJLcode logo: a terminal window icon next to the word RJLcode">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RJLcode · Projects">
+<meta name="twitter:description" content="Live dashboards and web apps by RJLcode. Open them on your phone or computer, no install needed.">
+<meta name="twitter:image" content="https://rjlcode.github.io/img/og-image.png">
+<meta name="twitter:image:alt" content="RJLcode logo: a terminal window icon next to the word RJLcode">
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #000000;
+    --muted: #4a4a4a;
+    --card: #ffffff;
+    --line: #d6d6d6;
+    --thumb-bg: #f2f2f2;
+    --btn-bg: #000000;
+    --btn-fg: #ffffff;
+    --focus: #000000;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --fg: #ffffff;
+      --muted: #b8b8b8;
+      --card: #0d0d0d;
+      --line: #333333;
+      --thumb-bg: #1a1a1a;
+      --btn-bg: #ffffff;
+      --btn-fg: #000000;
+      --focus: #ffffff;
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.45;
+    padding: 0 max(16px, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(16px, env(safe-area-inset-left));
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+  .wrap { max-width: 960px; margin: 0 auto; }
+
+  header { padding: 28px 0 8px; text-align: center; }
+  header img { display: block; width: min(260px, 72vw); height: auto; margin: 0 auto; }
+  .tagline { margin: 12px 0 0; color: var(--muted); font-size: 15px; text-wrap: balance; }
+
+  .projects {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 20px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .thumb { display: block; background: var(--thumb-bg); border-bottom: 1px solid var(--line); }
+  .thumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .body { padding: 16px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .body h2 { margin: 0; font-size: 20px; line-height: 1.2; font-weight: 700; }
+  .body p { margin: 0; color: var(--muted); font-size: 15px; }
+  .actions { margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: 10px; padding-top: 4px; }
+  .open {
+    display: block;
+    width: 100%;
+    min-height: 52px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+  }
+  .open:active { opacity: .8; }
+  .code {
+    display: inline-block;
+    padding: 6px 10px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  footer { padding: 32px 0 28px; text-align: center; font-size: 14px; color: var(--muted); }
+
+  /* Wider screens: desktop screenshots, two columns */
+  @media (min-width: 700px) {
+    header { padding-top: 48px; }
+    .projects { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .thumb img { aspect-ratio: 16 / 10; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <picture>
+      <source srcset="img/logo-white.png" media="(prefers-color-scheme: dark)">
+      <img src="img/logo-black.png" width="720" height="192" alt="RJLcode">
+    </picture>
+    <p class="tagline">Live dashboards and web apps. Tap one to open it.</p>
+  </header>
+
+  <main>
+    <h1 hidden>Projects</h1>
+    <ul class="projects">
+<!-- ================================================================
+     PROJECT LIST: START
+     One <li> per project, newest first. To add a project:
+       1. Run tools/add-screenshots.sh <name> <mac.png> <iphone.png>
+          (makes img/<name>-mac.webp and img/<name>-iphone.webp)
+       2. Copy one <li class="card"> block below and change:
+          the two image paths, the alt text, the title,
+          the description, the Open link and the Code link.
+     ================================================================ -->
+
+      <li class="card">
+        <a class="thumb" href="https://rjlcode.github.io/AirportCams/" tabindex="-1">
+          <picture>
+            <source srcset="img/AirportCams-mac.webp" width="960" height="600" media="(min-width: 700px)">
+            <img src="img/AirportCams-iphone.webp" width="720" height="720" decoding="async"
+                 alt="Airport Cams wall display: live Flightradar24 YouTube cameras from London Heathrow, New Orleans, Las Vegas and LaGuardia in a grid, each showing a plane with its flight number and route">
+          </picture>
+        </a>
+        <div class="body">
+          <h2>Airport Cams</h2>
+          <p>Wall display of Flightradar24's live YouTube airport cameras (LHR, LGA, LAS, SXM and more) in a grid that fits the screen. A Cloudflare Worker keeps the list of live cameras current, and you can choose and reorder cameras, listen to one, enlarge one, or add any YouTube stream.</p>
+          <div class="actions">
+            <a class="open" href="https://rjlcode.github.io/AirportCams/">Open</a>
+            <a class="code" href="https://github.com/RJLcode/AirportCams">Code</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="card">
+        <a class="thumb" href="https://rjlcode.github.io/space-dashboard/" tabindex="-1">
+          <picture>
+            <source srcset="img/space-dashboard-mac.webp" width="960" height="600" media="(min-width: 700px)">
+            <img src="img/space-dashboard-iphone.webp" width="720" height="720" loading="lazy" decoding="async"
+                 alt="Space dashboard in dark blue: counts of upcoming launches, launches in the next 7 days, people in space and ISS speed, above a countdown to the next SpaceX Starlink launch">
+          </picture>
+        </a>
+        <div class="body">
+          <h2>Space Dashboard</h2>
+          <p>Live space mission dashboard: every upcoming rocket launch worldwide with countdowns, search and filters, plus real-time ISS tracking and who's in space right now. A single HTML file with no build step.</p>
+          <div class="actions">
+            <a class="open" href="https://rjlcode.github.io/space-dashboard/">Open</a>
+            <a class="code" href="https://github.com/RJLcode/space-dashboard">Code</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="card">
+        <a class="thumb" href="https://rjlcode.github.io/Scoreboard/" tabindex="-1">
+          <picture>
+            <source srcset="img/Scoreboard-mac.webp" width="960" height="600" media="(min-width: 700px)">
+            <img src="img/Scoreboard-iphone.webp" width="720" height="720" loading="lazy" decoding="async"
+                 alt="Scoreboard showing NFL final scores in dark cards, each with both team logos, abbreviations, records and the score">
+          </picture>
+        </a>
+        <div class="body">
+          <h2>Scoreboard</h2>
+          <p>Mobile-first live scoreboard for NFL, NCAA football, MLB, and NHL. Tap any team for standings, streaks, and recent results. A single HTML file you can add to your iPhone home screen, using ESPN data.</p>
+          <div class="actions">
+            <a class="open" href="https://rjlcode.github.io/Scoreboard/">Open</a>
+            <a class="code" href="https://github.com/RJLcode/Scoreboard">Code</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="card">
+        <a class="thumb" href="https://rjlcode.github.io/LongIslandFireTracker/" tabindex="-1">
+          <picture>
+            <source srcset="img/LongIslandFireTracker-mac.webp" width="960" height="600" media="(min-width: 700px)">
+            <img src="img/LongIslandFireTracker-iphone.webp" width="720" height="720" loading="lazy" decoding="async"
+                 alt="Long Island Fire Tracker dashboard for Nassau County: totals for all-time working fires, the 2025 total, annual average, most active department, most active battalion and peak year">
+          </picture>
+        </a>
+        <div class="body">
+          <h2>Long Island Fire Tracker</h2>
+          <p>A static GitHub Pages dashboard for tracking Nassau and Suffolk County working fire counts by year, month, battalion/division, and department.</p>
+          <div class="actions">
+            <a class="open" href="https://rjlcode.github.io/LongIslandFireTracker/">Open</a>
+            <a class="code" href="https://github.com/RJLcode/LongIslandFireTracker">Code</a>
+          </div>
+        </div>
+      </li>
+
+<!-- ================================================================
+     PROJECT LIST: END
+     ================================================================ -->
+    </ul>
+  </main>
+
+  <footer>
+    <a href="https://github.com/RJLcode">github.com/RJLcode</a>
+  </footer>
+</div>
+</body>
+</html>
