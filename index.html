@@ -105,6 +105,7 @@
   .body { padding: 16px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
   .body h2 { margin: 0; font-size: 20px; line-height: 1.2; font-weight: 700; }
   .body p { margin: 0; color: var(--muted); font-size: 15px; }
+  .body .updated { margin-top: -4px; font-size: 13px; }
   .actions { margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: 10px; padding-top: 4px; }
   .open {
     display: block;
@@ -171,6 +172,7 @@
         <div class="body">
           <h2>Airport Cams</h2>
           <p>Wall display of Flightradar24's live YouTube airport cameras (LHR, LGA, LAS, SXM and more) in a grid that fits the screen. A Cloudflare Worker keeps the list of live cameras current, and you can choose and reorder cameras, listen to one, enlarge one, or add any YouTube stream.</p>
+          <p class="updated">Updated <time datetime="2026-10-12T22:18:32Z" data-repo="RJLcode/AirportCams">Oct 12, 2026</time></p>
           <div class="actions">
             <a class="open" href="https://rjlcode.github.io/AirportCams/">Open</a>
             <a class="code" href="https://github.com/RJLcode/AirportCams">Code</a>
@@ -189,6 +191,7 @@
         <div class="body">
           <h2>Space Dashboard</h2>
           <p>Live space mission dashboard: every upcoming rocket launch worldwide with countdowns, search and filters, plus real-time ISS tracking and who's in space right now. A single HTML file with no build step.</p>
+          <p class="updated">Updated <time datetime="2026-10-12T19:23:46Z" data-repo="RJLcode/space-dashboard">Oct 12, 2026</time></p>
           <div class="actions">
             <a class="open" href="https://rjlcode.github.io/space-dashboard/">Open</a>
             <a class="code" href="https://github.com/RJLcode/space-dashboard">Code</a>
@@ -207,6 +210,7 @@
         <div class="body">
           <h2>Scoreboard</h2>
           <p>Mobile-first live scoreboard for NFL, NCAA football, MLB, and NHL. Tap any team for standings, streaks, and recent results. A single HTML file you can add to your iPhone home screen, using ESPN data.</p>
+          <p class="updated">Updated <time datetime="2026-10-11T04:51:32Z" data-repo="RJLcode/Scoreboard">Oct 11, 2026</time></p>
           <div class="actions">
             <a class="open" href="https://rjlcode.github.io/Scoreboard/">Open</a>
             <a class="code" href="https://github.com/RJLcode/Scoreboard">Code</a>
@@ -225,6 +229,7 @@
         <div class="body">
           <h2>Long Island Fire Tracker</h2>
           <p>A static GitHub Pages dashboard for tracking Nassau and Suffolk County working fire counts by year, month, battalion/division, and department.</p>
+          <p class="updated">Updated <time datetime="2026-10-11T04:51:32Z" data-repo="RJLcode/LongIslandFireTracker">Oct 11, 2026</time></p>
           <div class="actions">
             <a class="open" href="https://rjlcode.github.io/LongIslandFireTracker/">Open</a>
             <a class="code" href="https://github.com/RJLcode/LongIslandFireTracker">Code</a>
@@ -242,5 +247,20 @@
     <a href="https://github.com/RJLcode">github.com/RJLcode</a>
   </footer>
 </div>
+<script>
+  // Refresh each "Updated" date from the repo's latest commit on its default branch.
+  // The dates written in the HTML stay as a fallback if GitHub can't be reached.
+  (function () {
+    var fmt = new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", year: "numeric" });
+    document.querySelectorAll("time[data-repo]").forEach(function (el) {
+      var show = function (iso) { el.dateTime = iso; el.textContent = fmt.format(new Date(iso)); };
+      show(el.dateTime);
+      fetch("https://api.github.com/repos/" + el.dataset.repo + "/commits?per_page=1")
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+        .then(function (c) { if (c[0]) show(c[0].commit.committer.date); })
+        .catch(function () {});
+    });
+  })();
+</script>
 </body>
 </html>
