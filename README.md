@@ -14,7 +14,16 @@ Plain HTML and CSS in a single `index.html`, no build step.
 
 3. In `index.html`, find the block marked **PROJECT LIST: START**. Copy one
    `<li class="card">` block, paste it in position (newest first), and change
-   the image paths, alt text, title, description, Open link and Code link.
+   the image paths, alt text, title, description, tags, Updated date and
+   repo, Open link and Code link.
+   - **Tags:** keep one category tag (for example `Aviation`, `Space`,
+     `Sports`, `Public Safety`). Keep `<li class="live">Live data</li>` only
+     if the app pulls real-time feeds; delete that line otherwise.
+   - **Updated:** set `data-repo` to `RJLcode/<repo-name>`. The page fetches
+     the latest commit date from GitHub on load; the date written in the HTML
+     is the fallback.
+   - Long descriptions are fine: cards show the first three lines.
+
    Take the description and live URL from the repo's About field:
 
    ```bash
