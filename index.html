@@ -210,13 +210,19 @@
     .code { padding: 10px 20px; }
   }
 
+  /* Hover highlight (mouse only): accent border and glow, no motion */
+  @media (hover: hover) and (pointer: fine) {
+    .card:hover, .card:focus-within {
+      border-color: var(--accent-line);
+      box-shadow: 0 0 0 1px var(--accent-line), var(--shadow-hover);
+    }
+  }
   /* Motion: only with a mouse, and only when the visitor allows it */
   @media (prefers-reduced-motion: no-preference) {
     .tags .live::before { animation: pulse 2.4s ease-out infinite; }
     @media (hover: hover) and (pointer: fine) {
-      .card, .thumb img { transition: transform .25s ease, box-shadow .25s ease; }
-      .card:hover, .card:focus-within { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
-      .card:hover .thumb img, .card:focus-within .thumb img { transform: scale(1.03); }
+      .card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+      .card:hover, .card:focus-within { transform: translateY(-3px); }
     }
   }
   @keyframes pulse {
